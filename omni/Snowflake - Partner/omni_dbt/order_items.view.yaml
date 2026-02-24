@@ -27,6 +27,7 @@ dimensions:
 
   product_price:
     sql: '"PRODUCT_PRICE"'
+    description: this is the price of the producvt
 
   is_food_item:
     sql: '"IS_FOOD_ITEM"'
