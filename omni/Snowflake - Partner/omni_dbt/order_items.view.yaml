@@ -24,6 +24,7 @@ dimensions:
 
   product_name:
     sql: '"PRODUCT_NAME"'
+    description: I'll make a change here
 
   product_price:
     sql: '"PRODUCT_PRICE"'
