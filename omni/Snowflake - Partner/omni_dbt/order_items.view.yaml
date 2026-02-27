@@ -1,6 +1,9 @@
 # Reference this view as omni_dbt__order_items
 label: Order Item
 schema_label: ""
+description: Order item level fact table with one row per product on an order,
+  including price, food/drink classification, and allocated supply cost used for
+  revenue and margin analysis.
 
 schema: omni_dbt
 table_name: ORDER_ITEMS
@@ -9,34 +12,56 @@ dimensions:
   order_item_id:
     sql: '"ORDER_ITEM_ID"'
     format: ID
+    #This description was authored for AI context.
+    description: Unique identifier for each order line item in the mart.
     primary_key: true
 
   order_id:
     sql: '"ORDER_ID"'
     format: ID
+    #This description was authored for AI context.
+    description: Foreign key linking this line item back to its parent order in the
+      Orders mart.
 
   product_id:
     sql: '"PRODUCT_ID"'
     format: ID
+    #This description was authored for AI context.
+    description: Foreign key identifying which product was purchased on this order item row.
 
   ordered_at:
     sql: '"ORDERED_AT"'
+    #This description was authored for AI context.
+    description: Timestamp when the order containing this item was placed.
 
   product_name:
     sql: '"PRODUCT_NAME"'
+    #This description was authored for AI context.
+    description: Human-readable name of the product on this line item.
 
   product_price:
     sql: '"PRODUCT_PRICE"'
-    description: this is the price of the producvt
+    #This description was authored for AI context.
+    description: Unit sale price of the product for this order item, typically in
+      USD, before returns or adjustments.
 
   is_food_item:
     sql: '"IS_FOOD_ITEM"'
+    #This description was authored for AI context.
+    description: Boolean flag indicating if the purchased product is classified as a
+      food item for reporting and item mix analysis.
 
   is_drink_item:
     sql: '"IS_DRINK_ITEM"'
+    #This description was authored for AI context.
+    description: Boolean flag indicating if the purchased product is classified as a
+      drink item for reporting and item mix analysis.
 
   supply_cost:
     sql: '"SUPPLY_COST"'
+    #This description was authored for AI context.
+    description: Allocated supply cost associated with this product, derived from
+      upstream supplies and used for margin and cost analysis.
 
 measures:
   count:
@@ -143,3 +168,34 @@ dbt:
 
     select * from joined
   referenced_by: [ orders ]
+
+#This AI context was enriched using your Notion knowledge base.
+ai_context: |-
+  This view models individual order line items for an ecommerce business.
+  Each row represents a single product purchased on an order, with its unit price,
+  flags for whether it is a food or drink item, and an allocated supply_cost
+  derived from upstream supply data.
+
+  Use this view when you need item-level revenue, item mix, or cost analysis.
+  The revenue-related measures (revenue, food_revenue, drink_revenue, median_revenue)
+  are based on PRODUCT_PRICE and are typically rolled up with the Orders mart,
+  where order-level totals, tax, and customer context live.
+
+  Business policies from the "Brand Return Policy & Restocking Rules" Notion page
+  define how returns and margin adjustments should be interpreted:
+  - Standard return window is 30 days from delivered_at, with brand-specific
+    overrides (for example, Levi's and The North Face allow 45 days, Calvin Klein
+    allows 14 days).
+  - Restocking fees vary by brand (for example, Ray‑Ban 10% of sale_price,
+    Calvin Klein 15%), and clearance items are generally final sale.
+  - Margin analysis must consider MARGIN, brand-specific restocking fees, and
+    shipping deduction rules.
+  Those rules are not implemented directly in this view, but this item-level data
+  is what downstream models join to brand, delivery, and margin attributes to
+  evaluate return impact and profitability at a product level.
+
+  Shipping SLAs described in the "Shipping SLA by Distribution Center" Notion page
+  are evaluated primarily at the shipment/order level using fields like
+  distribution_center_id, time_to_ship, created_at, and brand. When using this
+  view with shipping metrics, treat these rows as the detailed item breakdown
+  of orders whose shipping performance is governed by those SLA rules.
