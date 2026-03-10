@@ -1,4 +1,4 @@
 base_view: analytics_dev_schema_a__orders_a
-label: Schema A Orders
+label: Main Orders Topic
 
 joins: {}
