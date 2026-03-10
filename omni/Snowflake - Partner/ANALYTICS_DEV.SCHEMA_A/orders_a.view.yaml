@@ -1,0 +1,17 @@
+# Reference this view as analytics_dev_schema_a__orders_a
+catalog: ANALYTICS_DEV
+schema: SCHEMA_A
+table_name: ORDERS_A
+
+dimensions:
+  order_id:
+    sql: '"ORDER_ID"'
+    format: ID
+    primary_key: true
+
+  amount:
+    sql: '"AMOUNT"'
+
+measures:
+  count:
+    aggregate_type: count
