@@ -1,1 +1,7 @@
-{}
+dynamic_shared_extensions:
+  - user_attribute: schema_name
+    mappings:
+      schema_a:
+        values_for_model: [ schema_a ]
+      schema_b:
+        values_for_model: [ schema_b ]

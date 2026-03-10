@@ -1,0 +1,17 @@
+# Reference this view as analytics_dev_schema_b__users_b
+catalog: ANALYTICS_DEV
+schema: SCHEMA_B
+table_name: USERS_B
+
+dimensions:
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+measures:
+  count:
+    aggregate_type: count
