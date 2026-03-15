@@ -38,9 +38,6 @@ dimensions:
   order_total:
     sql: '"ORDER_TOTAL"'
 
-  ordered_at:
-    sql: '"ORDERED_AT"'
-
 measures:
   count:
     aggregate_type: count
@@ -79,7 +76,7 @@ dbt:
             {{ cents_to_dollars('order_total') }} as order_total,
 
             ---------- timestamps
-            {{ dbt.date_trunc('day','ordered_at') }} as ordered_at
+            -- {{ dbt.date_trunc('day','ordered_at') }} as ordered_at
 
         from source
 

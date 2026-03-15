@@ -1,6 +1,4 @@
 # Reference this view as dbt_sleon_prod__products
-label: Products
-
 schema: DBT_SLEON_PROD
 table_name: PRODUCTS
 
@@ -8,7 +6,6 @@ dimensions:
   product_id:
     sql: '"PRODUCT_ID"'
     format: ID
-    primary_key: true
 
   product_name:
     sql: '"PRODUCT_NAME"'

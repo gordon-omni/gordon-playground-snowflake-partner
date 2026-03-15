@@ -1,9 +1,12 @@
-# Reference this view as dbt_sleon_prod__stg_foo
+# Reference this view as dbt_sleon_prod__example
 schema: DBT_SLEON_PROD
-table_name: STG_FOO
+table_name: EXAMPLE
 
 dimensions:
-  mycol: {}
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
 
 measures:
   count:
@@ -11,11 +14,8 @@ measures:
 
 #The info below was pulled from your dbt repository and is read-only.
 dbt:
-  name: stg_foo
+  name: example
   target_schema: dbt_sleon_prod
   config:
-    materialized: view
-  code: |-
-    select 1 as "mycol"
-    union
-    select 2 as "mycol"
+    materialized: table
+  code: select 1 as id
