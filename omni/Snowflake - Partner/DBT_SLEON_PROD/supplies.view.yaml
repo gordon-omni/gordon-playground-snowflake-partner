@@ -1,10 +1,13 @@
 # Reference this view as dbt_sleon_prod__supplies
+label: Supplies
+
 schema: DBT_SLEON_PROD
 table_name: SUPPLIES
 
 dimensions:
   supply_uuid:
     sql: '"SUPPLY_UUID"'
+    primary_key: true
 
   supply_id:
     sql: '"SUPPLY_ID"'
@@ -22,6 +25,11 @@ dimensions:
 
   is_perishable_supply:
     sql: '"IS_PERISHABLE_SUPPLY"'
+
+  _entity_supply:
+    # Entity is defined in the 'supplies' dbt semantic model (models/marts/supplies.yml)
+    sql: ${supply_uuid}
+    hidden: true
 
 measures:
   count:

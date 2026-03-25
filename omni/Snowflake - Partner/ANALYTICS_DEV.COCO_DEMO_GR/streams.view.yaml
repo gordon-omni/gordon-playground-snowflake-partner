@@ -1,0 +1,42 @@
+# Reference this view as analytics_dev_coco_demo_gr__streams
+catalog: ANALYTICS_DEV
+schema: COCO_DEMO_GR
+table_name: STREAMS
+
+dimensions:
+  stream_id:
+    sql: '"STREAM_ID"'
+    format: ID
+
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  podcast_id:
+    sql: '"PODCAST_ID"'
+    format: ID
+
+  episode_number:
+    sql: '"EPISODE_NUMBER"'
+
+  stream_date:
+    sql: '"STREAM_DATE"'
+
+  listen_duration_sec:
+    sql: '"LISTEN_DURATION_SEC"'
+
+  episode_duration_sec:
+    sql: '"EPISODE_DURATION_SEC"'
+
+  completed:
+    sql: '"COMPLETED"'
+
+  device_type:
+    sql: '"DEVICE_TYPE"'
+
+  stream_quality:
+    sql: '"STREAM_QUALITY"'
+
+measures:
+  count:
+    aggregate_type: count

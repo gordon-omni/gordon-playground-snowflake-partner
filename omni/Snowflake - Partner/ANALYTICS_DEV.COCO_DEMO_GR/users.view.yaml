@@ -1,0 +1,40 @@
+# Reference this view as analytics_dev_coco_demo_gr__users
+catalog: ANALYTICS_DEV
+schema: COCO_DEMO_GR
+table_name: USERS
+
+dimensions:
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  username:
+    sql: '"USERNAME"'
+
+  email:
+    sql: '"EMAIL"'
+
+  first_name:
+    sql: '"FIRST_NAME"'
+
+  last_name:
+    sql: '"LAST_NAME"'
+
+  subscription_tier:
+    sql: '"SUBSCRIPTION_TIER"'
+
+  signup_date:
+    sql: '"SIGNUP_DATE"'
+
+  country:
+    sql: '"COUNTRY"'
+
+  age:
+    sql: '"AGE"'
+
+  is_active:
+    sql: '"IS_ACTIVE"'
+
+measures:
+  count:
+    aggregate_type: count

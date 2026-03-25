@@ -1,0 +1,40 @@
+# Reference this view as analytics_dev_coco_demo_gr__podcasts
+catalog: ANALYTICS_DEV
+schema: COCO_DEMO_GR
+table_name: PODCASTS
+
+dimensions:
+  podcast_id:
+    sql: '"PODCAST_ID"'
+    format: ID
+
+  podcast_name:
+    sql: '"PODCAST_NAME"'
+
+  host_name:
+    sql: '"HOST_NAME"'
+
+  genre:
+    sql: '"GENRE"'
+
+  language:
+    sql: '"LANGUAGE"'
+
+  episode_count:
+    sql: '"EPISODE_COUNT"'
+
+  avg_episode_length_min:
+    sql: '"AVG_EPISODE_LENGTH_MIN"'
+
+  rating:
+    sql: '"RATING"'
+
+  is_exclusive:
+    sql: '"IS_EXCLUSIVE"'
+
+  launch_date:
+    sql: '"LAUNCH_DATE"'
+
+measures:
+  count:
+    aggregate_type: count
