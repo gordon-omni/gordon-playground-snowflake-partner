@@ -1,5 +1,6 @@
 base_view: analytics_dev_schema_b__orders_b
 label: Orders
 
+# this is a conflicting comment
 joins:
   analytics_dev_schema_b__users_b: {}
